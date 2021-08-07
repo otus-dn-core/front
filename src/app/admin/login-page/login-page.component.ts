@@ -20,9 +20,9 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      username: new FormControl(null, [
-        Validators.required,
-      ]),
+      // username: new FormControl(null, [
+      //   Validators.required,
+      // ]),
       email: new FormControl(null, [
         Validators.required,
         Validators.email
@@ -34,13 +34,13 @@ export class LoginPageComponent implements OnInit {
     })
   }
 
-  submit() {
+  submit() {    
     if (this.form.invalid) {
       return
     }
 
   const user: User = {
-    username: this.form.value.username,
+    // username: this.form.value.username,
     email: this.form.value.email,
     password: this.form.value.password
     }

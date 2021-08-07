@@ -35,7 +35,7 @@ export class AuthService {
 
   private setToken(response: any | null) {
     if (response) {
-      console.log(response.user.token);
+      // console.log(response.user.token);
     localStorage.setItem('nest-token', response.user.token);
     } else {
       localStorage.clear();

@@ -1,35 +1,39 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h2>Войти </h2>
-    <div class="form-control">
+    <!-- <div class="form-control"
+    [ngClass]="{invalid: form.controls.username.touched && form.controls.username.invalid}"
+    >
     <label for="username">username:</label>
     <input id="username" type="username" formControlName="username">
     <div class="validation">
-      <small>
-          small
+      <small *ngIf="form.controls.username.touched && form.controls.username.invalid">
+          введите имя
       </small>
     </div>
-  </div>
+  </div> -->
     <div
       class="form-control"
-      [ngClass]="{invalid: form.touched && form.invalid}"
+      [ngClass]="{invalid: form.controls.email.touched && form.controls.email.invalid}"
       >
       <label for="email">Email:</label>
       <input id="email" type="email" formControlName="email">
       <div
         class="validation"
         >
-      <small *ngIf="form.touched && form.invalid">
-        Поле должно соответствовать email
-      </small>
+        <small *ngIf="form.controls.email.touched && form.controls.email.invalid">
+            Поле должно соответствовать email
+        </small>
     </div>
     </div>
     <div
-      class="form-control">
+      class="form-control"
+      [ngClass]="{invalid: form.controls.password.touched && form.controls.password.invalid}"
+      >
       <label for="password">Пароль:</label>
       <input id="password" type="password" formControlName="password">
       <div class="validation">
-        <small>
-            small
+        <small *ngIf="form.controls.password.touched && form.controls.password.invalid">
+            введите пароль
         </small>
       </div>
     </div>
