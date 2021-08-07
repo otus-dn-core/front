@@ -1,1 +1,42 @@
-<p>login-page works!</p>
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Войти </h2>
+    <div class="form-control">
+    <label for="username">username:</label>
+    <input id="username" type="username" formControlName="username">
+    <div class="validation">
+      <small>
+          small
+      </small>
+    </div>
+  </div>
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.touched && form.invalid}"
+      >
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+      <div
+        class="validation"
+        >
+      <small *ngIf="form.touched && form.invalid">
+        Поле должно соответствовать email
+      </small>
+    </div>
+    </div>
+    <div
+      class="form-control">
+      <label for="password">Пароль:</label>
+      <input id="password" type="password" formControlName="password">
+      <div class="validation">
+        <small>
+            small
+        </small>
+      </div>
+    </div>
+
+    <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="form.invalid"
+  >Войти</button>
+  </form>
