@@ -7,6 +7,7 @@ import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layou
 import {LoginPageComponent} from './login-page/login-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { AuthService } from './shared/services/auth.service';
+import { AuthGuard } from './shared/services/auth.guard';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -25,12 +26,12 @@ import { SharedModule } from '../shared/shared.module';
         path: '', component: AdminLayoutComponent, children: [
           {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
           {path: 'login', component: LoginPageComponent},
-          {path: 'create', component: CreatePostComponent}
+          {path: 'create', component: CreatePostComponent, canActivate: [AuthGuard]}
         ]
       }
     ])
   ],
   exports: [RouterModule],
-  providers: [AuthService]
+  providers: [AuthService, AuthGuard]
 })
 export class AdminModule { }

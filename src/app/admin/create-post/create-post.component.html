@@ -1,1 +1,61 @@
-<p>create-post works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Создание нового поста</h1>
+  
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.controls.title.touched && form.controls.title.invalid}"
+    >
+      <label for="title">Название поста:</label>
+      <input id="title" type="text" formControlName="title">
+      <div
+        *ngIf="form.controls.title.touched && form.controls.title.invalid"
+        class="validation"
+      >
+        <small *ngIf="form.controls.title.touched && form.controls.title.invalid">
+          Введите название поста
+        </small>
+      </div>
+    </div>
+  
+    <!-- <div class="form-control">
+      <label>Контент поста:</label>
+    </div> -->
+  
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.controls.description.touched && form.controls.description.invalid}"
+    >
+      <label for="description">Подзаголовок:</label>
+      <input id="description" type="text" formControlName="description">
+      <div
+        *ngIf="form.controls.description.touched && form.controls.description.invalid"
+        class="validation"
+      >
+        <small *ngIf="form.controls.description.touched && form.controls.description.invalid">
+          Введите описание (подзаголовок)
+        </small>
+      </div>
+    </div>
+
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.controls.body.touched && form.controls.body.invalid}"
+    >
+      <label for="body">Основной текст:</label>
+      <input id="body" type="text" formControlName="body">
+      <div
+        *ngIf="form.controls.body.touched && form.controls.body.invalid"
+        class="validation"
+      >
+        <small *ngIf="form.controls.body.touched && form.controls.body.invalid">
+          Введите основное сообщение
+        </small>
+      </div>
+    </div>
+  
+    <button
+      type="submit"
+      class="btn btn-block btn-dark"
+      [disabled]="form.invalid"
+    >Создать пост</button>
+  </form>
