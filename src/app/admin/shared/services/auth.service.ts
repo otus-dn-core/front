@@ -4,7 +4,7 @@ import {User} from '../../../shared/interfaces';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthService {
   constructor(private http: HttpClient) {}
 

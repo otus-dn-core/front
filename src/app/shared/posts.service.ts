@@ -10,7 +10,9 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   create(post: Post): Observable<Post> {
-    return this.http.post(`${environment.adminApi}/articles`, post)
+    const postobj = {article: post}
+    console.log(postobj);
+    return this.http.post(`${environment.adminApi}/articles`, postobj)
       .pipe(map((response: any) => {
         return {
           ...post,
