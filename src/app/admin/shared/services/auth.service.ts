@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {User} from '../../../shared/interfaces';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -14,12 +15,15 @@ export class AuthService {
 
   login(user: User): Observable<any> {
     const userobj = {user: user}
-    //console.log(userobj);
-     return this.http.post('http://localhost:3000/users/login', userobj)
-    //return this.http.post('http://localhost:3000/users', userobj)
+     return this.http.post(`${environment.adminApi}/users/login`, userobj)
+    .pipe(
+      tap(this.setToken)
+    )
+  }
 
-    // return this.http.post('http://localhost:3000/users/login', user)
-    // return this.http.post('http://localhost:3000/users', user)
+  register(user: User): Observable<any> {
+    const userobj = {user: user}
+     return this.http.post(`${environment.adminApi}/users`, userobj)
     .pipe(
       tap(this.setToken)
     )

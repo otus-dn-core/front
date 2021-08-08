@@ -1,6 +1,16 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-    <h2>Войти </h2>
-
+    <h2>Регистрация пользователя </h2>
+      <div class="form-control"
+      [ngClass]="{invalid: form.controls.username.touched && form.controls.username.invalid}"
+      >
+      <label for="username">username:</label>
+      <input id="username" type="username" formControlName="username">
+      <div class="validation">
+        <small *ngIf="form.controls.username.touched && form.controls.username.invalid">
+            введите имя
+        </small>
+      </div>
+    </div>
     <div
       class="form-control"
       [ngClass]="{invalid: form.controls.email.touched && form.controls.email.invalid}"
@@ -34,5 +44,3 @@
     [disabled]="form.invalid"
   >Войти</button>
   </form>
-
-  

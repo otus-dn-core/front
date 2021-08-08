@@ -11,7 +11,7 @@ export class PostsService {
 
   create(post: Post): Observable<Post> {
     const postobj = {article: post}
-    console.log(postobj);
+    // console.log(postobj);
     return this.http.post(`${environment.adminApi}/articles`, postobj)
       .pipe(map((response: any) => {
         return {

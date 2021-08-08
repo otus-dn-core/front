@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
 import {LoginPageComponent} from './login-page/login-page.component';
+import {RegisterPageComponent} from './register-page/register-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { SharedModule } from '../shared/shared.module';
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [AdminLayoutComponent,
   LoginPageComponent,
+  RegisterPageComponent,
   CreatePostComponent],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { SharedModule } from '../shared/shared.module';
         path: '', component: AdminLayoutComponent, children: [
           {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
           {path: 'login', component: LoginPageComponent},
+          {path: 'register', component: RegisterPageComponent},
           {path: 'create', component: CreatePostComponent, canActivate: [AuthGuard]}
         ]
       }
