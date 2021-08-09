@@ -1,18 +1,17 @@
-<div *ngIf="posts; else loading">
-    {{posts[0].body}}
-  </div>
-  
-
-
+<div
+  *ngIf="posts as posts; else loading"
+  class="posts"
+>
+<a href="#" (click)="reloadArticles($event)">Обновить</a>
+<!-- {{posts[0].author?.email}} -->
+  <app-post-page
+    *ngFor="let post of posts"
+    [post]="post"
+  ></app-post-page>
+</div>
 
 <ng-template #loading>
-  <p class="text-center">Идет загрузка...</p>
+  <p class="text-center">Загружаю посты...</p>
 </ng-template>
 
 
-
-<!-- <div class="posts">
-    <app-post-page></app-post-page>
-    <app-post-page></app-post-page>
-    <app-post-page></app-post-page>
-  </div> -->

@@ -1,16 +1,14 @@
 <div class="card">
     <div class="card-header">
-      <h2>Post title</h2>
+      <h2>{{ post.title }}</h2>
   
-      <small>12.09.2019</small>
+      <small>{{ post.id }}</small>
     </div>
   
     <div>
-      <small>Author</small>
+      <small>{{ post.body }}</small>
     </div>
-  
-    <button
-      [routerLink]="['/post', 12312]"
-      class="btn btn-dark"
-    >Открыть</button>
+
+    <a href="#" (click)="deleteArticle($event)">Удалить</a>
+
   </div>

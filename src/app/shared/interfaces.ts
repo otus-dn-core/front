@@ -13,6 +13,15 @@ export interface Post {
   title: string
   description: string
   body: string
+  author?: Author
+}
+
+export interface Author {
+  email: string
+  id: number
+  username: string
+  forself?: string
+  image?: string
 }
 
 export interface Rest {

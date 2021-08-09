@@ -18,19 +18,26 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(private postsService: PostsService) { }
 
-  ngOnInit() {
+  forNgOnInit() {
     this.pSub = this.postsService.getAll().subscribe((posts: Rest) => {
-      console.log('posts: ', posts);
-      console.log('this.posts: ', this.posts);
+      // console.log('this.posts: ', this.posts);
       this.posts = posts.articles
-      console.log('this.posts: ', this.posts);
     })
+  }
+
+  ngOnInit() {
+    this.forNgOnInit()
   }
 
   ngOnDestroy() {
     if (this.pSub) {
       this.pSub.unsubscribe()
     }
+  }
+
+  reloadArticles(event: Event) {
+    event.preventDefault();
+    this.forNgOnInit();
   }
 
 }

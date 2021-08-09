@@ -25,16 +25,8 @@ export class PostsService {
     return this.http.get(`${environment.adminApi}/articles`)
   }
 
-
-  // getAll(): Observable<Post[]> {
-  //   return this.http.get(`${environment.adminApi}/articles`)
-  //     .pipe(map((response: {[key: string]: any}) => {
-  //       return Object
-  //         .keys(response)
-  //         .map(key => ({
-  //           ...response[key],
-  //         }))
-  //     }))
-  // }
+  deleteArticle(slug: string): Observable<any> {
+    return this.http.delete(`${environment.adminApi}/articles/${slug}`)
+  }
 
 }
