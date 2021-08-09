@@ -9,6 +9,7 @@ import {RegisterPageComponent} from './register-page/register-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { SharedModule } from '../shared/shared.module';
+import {DashboardPageComponent} from './dashboard-page/dashboard-page.component';
 
 
 
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [AdminLayoutComponent,
   LoginPageComponent,
   RegisterPageComponent,
+  DashboardPageComponent,
   CreatePostComponent],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { SharedModule } from '../shared/shared.module';
           {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
           {path: 'login', component: LoginPageComponent},
           {path: 'register', component: RegisterPageComponent},
+          {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
           {path: 'create', component: CreatePostComponent, canActivate: [AuthGuard]}
         ]
       }

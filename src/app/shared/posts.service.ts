@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Post} from './interfaces';
+import {Post, Rest} from './interfaces';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 
@@ -20,4 +20,21 @@ export class PostsService {
         }
       }))
   }
+
+    getAll(): Observable<any> {
+    return this.http.get(`${environment.adminApi}/articles`)
+  }
+
+
+  // getAll(): Observable<Post[]> {
+  //   return this.http.get(`${environment.adminApi}/articles`)
+  //     .pipe(map((response: {[key: string]: any}) => {
+  //       return Object
+  //         .keys(response)
+  //         .map(key => ({
+  //           ...response[key],
+  //         }))
+  //     }))
+  // }
+
 }

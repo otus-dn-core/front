@@ -15,3 +15,7 @@ export interface Post {
   body: string
 }
 
+export interface Rest {
+  articles: Post[]
+  articlesCount: number
+}

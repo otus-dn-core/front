@@ -1,18 +1,13 @@
+<h2>dashboard</h2>
 <div *ngIf="posts; else loading">
+  <div class="form-control">
+    <input type="text" placeholder="Найти пост...">
     {{posts[0].body}}
   </div>
   
-
+</div>
 
 
 <ng-template #loading>
   <p class="text-center">Идет загрузка...</p>
 </ng-template>
-
-
-
-<!-- <div class="posts">
-    <app-post-page></app-post-page>
-    <app-post-page></app-post-page>
-    <app-post-page></app-post-page>
-  </div> -->
