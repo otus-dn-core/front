@@ -9,6 +9,11 @@
       <small>{{ post.body }}</small>
     </div>
 
-    <a href="#" (click)="deleteArticle($event)">Удалить</a>
+    <!-- <a href="#" (click)="deleteArticle($event)">Удалить</a> -->
+
+    <button
+    (click)="deleteArticle($event)"
+    class="btn btn-danger"
+      >Удалить</button>
 
   </div>

@@ -15,7 +15,7 @@ export class MainLayoutComponent implements OnInit {
 
   adminPanel(event: Event) {
     event.preventDefault()
-    this.router.navigate(['/admin', 'login'])
+    this.router.navigate(['/admin', 'create'])
   }
 
 }

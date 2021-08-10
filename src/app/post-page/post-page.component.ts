@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import {Post} from '../shared/interfaces';
 import { PostsService } from '../shared/posts.service';
@@ -14,7 +14,9 @@ export class PostPageComponent implements OnInit {
   // @Input() post: Post
   @Input() post: any
 
-  
+  @Output() onChanged = new EventEmitter();
+
+    
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
@@ -23,10 +25,11 @@ export class PostPageComponent implements OnInit {
   
   deleteArticle(event: Event) {
     event.preventDefault()
-    // console.log("1: ", this.post.author, "2: ", this.post.slug);
+    console.log("1: ", this.post.author, "2: ", this.post.slug);
     this.postsService.deleteArticle(this.post.slug).subscribe(res => console.log(res)
     );
-    // console.log("3: all");
+    console.log('deleteArticle');
+    this.onChanged.emit();
   }
 
 }

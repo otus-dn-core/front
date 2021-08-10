@@ -19,8 +19,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(private postsService: PostsService) { }
 
   forNgOnInit() {
-    this.pSub = this.postsService.getAll().subscribe((posts: Rest) => {
-      // console.log('this.posts: ', this.posts);
+   this.pSub = this.postsService.getAll().subscribe((posts: Rest) => {
+      // console.log('forNgOnInit()... posts: ',posts);
       this.posts = posts.articles
     })
   }
@@ -35,9 +35,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  reloadArticles(event: Event) {
-    event.preventDefault();
-    this.forNgOnInit();
+  reload() {
+    setTimeout(()=> {
+      this.forNgOnInit();
+    }, 100);
   }
 
 }

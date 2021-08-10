@@ -2,11 +2,10 @@
   *ngIf="posts as posts; else loading"
   class="posts"
 >
-<a href="#" (click)="reloadArticles($event)">Обновить</a>
-<!-- {{posts[0].author?.email}} -->
   <app-post-page
     *ngFor="let post of posts"
     [post]="post"
+    (onChanged)="reload()"
   ></app-post-page>
 </div>
 

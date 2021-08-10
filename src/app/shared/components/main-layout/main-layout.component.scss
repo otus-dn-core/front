@@ -1,3 +1,17 @@
-a {
-    color: brown;
-}
+// a {
+//     color: brown; --danger-color: #dc3545;
+// }
+li.active a {
+    color: var(--dark-color);
+    font-weight: bold;
+    cursor: default;
+  }
+
+  a {
+    color: var(--danger-color);
+    font-weight: bold;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
