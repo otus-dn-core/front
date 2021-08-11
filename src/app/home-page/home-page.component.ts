@@ -16,6 +16,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   posts: Post[]
   pSub: Subscription
 
+  public errorFromPostService: string
+
   constructor(private postsService: PostsService) { }
 
   forNgOnInit() {
@@ -35,10 +37,25 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  reload() {
+  reload(res: boolean | string) {
+    if(res === true) {
+      // console.log('RES TRUE: ', res);
+      this.outMassege('статья успешно удалена');
+      setTimeout(()=> {
+        this.forNgOnInit();
+      }, 100);
+    } else {
+      // console.log('RES FALSE: ', res);
+      const message: string = res as string;
+      this.outMassege(message);
+    } 
+  }
+
+  outMassege(message: string) {
+    this.errorFromPostService = message;
     setTimeout(()=> {
-      this.forNgOnInit();
-    }, 100);
+      this.errorFromPostService = '';
+    }, 2500);
   }
 
 }

@@ -1,3 +1,7 @@
+<div class="alert alert-danger" *ngIf="errorFromPostService">
+  {{errorFromPostService}}
+</div>
+
 <div
   *ngIf="posts as posts; else loading"
   class="posts"
@@ -5,7 +9,7 @@
   <app-post-page
     *ngFor="let post of posts"
     [post]="post"
-    (onChanged)="reload()"
+    (onChanged)="reload($event)"
   ></app-post-page>
 </div>
 

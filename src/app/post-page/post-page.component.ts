@@ -12,9 +12,9 @@ export class PostPageComponent implements OnInit {
 
   
   // @Input() post: Post
-  @Input() post: any
+   @Input() post: any
 
-  @Output() onChanged = new EventEmitter();
+  @Output() onChanged = new EventEmitter<boolean | string>();
 
     
   constructor(private postsService: PostsService) { }
@@ -25,11 +25,14 @@ export class PostPageComponent implements OnInit {
   
   deleteArticle(event: Event) {
     event.preventDefault()
-    console.log("1: ", this.post.author, "2: ", this.post.slug);
-    this.postsService.deleteArticle(this.post.slug).subscribe(res => console.log(res)
+    this.postsService.deleteArticle(this.post.slug).subscribe(
+      data=>{
+        this.onChanged.emit(true);
+      },
+       error => {
+         this.onChanged.emit(error.error.message);
+        } 
     );
-    console.log('deleteArticle');
-    this.onChanged.emit();
   }
 
 }
