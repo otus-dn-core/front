@@ -13,6 +13,8 @@ export class LoginPageComponent implements OnInit {
 
   form: FormGroup
 
+  public authLogin: string
+
   constructor(
     private auth: AuthService,
     private router: Router
@@ -45,9 +47,15 @@ export class LoginPageComponent implements OnInit {
     password: this.form.value.password
     }
   
-    this.auth.login(user).subscribe(() => {
-      this.form.reset()
-      this.router.navigate(['/admin', 'create'])
-    })
+    this.auth.login(user).subscribe(
+      data=>{
+        this.form.reset()
+       this.router.navigate(['/admin', 'create'])
+     },
+      error => {
+        this.authLogin = error.error.message;
+     } 
+
+    )
   }
 }

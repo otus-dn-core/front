@@ -13,6 +13,8 @@ export class RegisterPageComponent implements OnInit {
 
   form: FormGroup
 
+  public authRegister: string
+
   constructor(
     private auth: AuthService,
     private router: Router
@@ -45,9 +47,14 @@ export class RegisterPageComponent implements OnInit {
     password: this.form.value.password
     }
   
-    this.auth.register(user).subscribe(() => {
-      this.form.reset()
-      this.router.navigate(['/admin', 'create'])
-    })
+    this.auth.register(user).subscribe(
+        data=>{
+           this.form.reset()
+        this.router.navigate(['/admin', 'create'])
+        },
+         error => {
+           this.authRegister = error.error.message;
+        } 
+    )
   }
 }

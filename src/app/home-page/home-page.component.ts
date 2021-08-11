@@ -40,7 +40,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   reload(res: boolean | string) {
     if(res === true) {
       // console.log('RES TRUE: ', res);
-      this.outMassege('статья успешно удалена');
+      this.outMassege('Пост успешно удалён');
       setTimeout(()=> {
         this.forNgOnInit();
       }, 100);

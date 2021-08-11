@@ -1,3 +1,8 @@
+<div class="alert alert-danger" *ngIf="authRegister">
+  {{authRegister}}
+</div>
+
+
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h2>Регистрация пользователя </h2>
       <div class="form-control"
@@ -42,5 +47,5 @@
     type="submit"
     class="btn btn-primary"
     [disabled]="form.invalid"
-  >Войти</button>
+  >Регистрация</button>
   </form>
